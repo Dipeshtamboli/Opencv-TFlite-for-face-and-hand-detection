@@ -5,13 +5,16 @@ import matplotlib.tri as tri
 import numpy as np
 
 # import matplotlib.image as mpimg
-img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
+# img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
+img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/sanitizer.jpeg"
 # plt_img = mpimg.imread(img)
 
 frame = cv2.imread(img)
 print(frame.shape)
 frame = cv2.resize(frame, (256,256), interpolation = cv2.INTER_AREA)
 print(frame.shape)
+a =  plt.imshow(frame)
+
 frame = np.expand_dims(frame,0)
 # print(frame.shape)
 # print(type(frame))
@@ -24,7 +27,7 @@ import tensorflow as tf
 # interpreter = tf.lite.Interpreter(model_path="hand_landmark_3d.tflite") # output is 21*3
 # interpreter = tf.lite.Interpreter(model_path="hand_landmark.tflite") # ouput is 21*2
 # path = "/home/dipesh/Hackathon-where-is-my-sanitizer/tflite/models/hand_landmark.tflite"
-path = "/home/dipesh/Hackathon-where-is-my-sanitizer/tflite/models/hand_landmark_3d.tflite"
+path = "/home/dipesh/Hackathon-where-is-my-sanitizer/tflite/models/hand_landmark.tflite"
 interpreter = tf.lite.Interpreter(model_path=path) # ouput is 21*2
 interpreter.allocate_tensors()
 
@@ -69,9 +72,8 @@ print(y.shape)
 triang = tri.Triangulation(x, y)
 
 # Mask off unwanted triangles.
-triang.set_mask(np.hypot(x[triang.triangles].mean(axis=1), y[triang.triangles].mean(axis=1)))
+# triang.set_mask(np.hypot(x[triang.triangles].mean(axis=1), y[triang.triangles].mean(axis=1)))
 
-plt.imshow(frame)
 fig1, ax1 = plt.subplots()
 ax1.set_aspect('equal')
 ax1.triplot(triang, 'bo-', lw=1)
