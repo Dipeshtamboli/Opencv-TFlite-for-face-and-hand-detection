@@ -44,11 +44,14 @@ cv2.createTrackbar('v', 'HSV_TrackBar',0,255,nothing)
 # for single frame
 # img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand_on_desk.jpg"
 # img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hands_in_air.jpg"
-img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
+# img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
+# img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/sanitizer.jpeg"
+img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand2.jpeg"
 
 
 
 frame = cv2.imread(img)
+print("Size of the image:",frame.shape)
 blur = cv2.blur((frame),(3,3))
 # blur = frame
 
@@ -115,7 +118,7 @@ for i in range(defects.shape[0]):
     far = tuple(cnts[f][0])
     FarDefect.append(far)
     cv2.line(frame,start,end,[0,255,0],1)
-    cv2.circle(frame,far,10,[100,255,255],3)
+    # cv2.circle(frame,far,10,[100,255,255],3)
 
 #Find moments of the largest contour
 moments = cv2.moments(cnts)
@@ -125,11 +128,11 @@ if moments['m00']!=0:
     cx = int(moments['m10']/moments['m00']) # cx = M10/M00
     cy = int(moments['m01']/moments['m00']) # cy = M01/M00
 centerMass=(cx,cy)    
-
+print("co-ordinates of the centerMass:",centerMass)
 #Draw center mass
 cv2.circle(frame,centerMass,7,[100,0,255],2)
 font = cv2.FONT_HERSHEY_SIMPLEX
-cv2.putText(frame,'Center',tuple(centerMass),font,2,(255,255,255),2)     
+# cv2.putText(frame,'Center',tuple(centerMass),font,2,(255,255,255),2)     
 
 #Distance from each finger defect(finger webbing) to the center mass
 distanceBetweenDefectsToCenter = []
@@ -169,7 +172,7 @@ for i in range(0,len(fingers)):
         result = result +1
 
 #Print number of pointed fingers
-cv2.putText(frame,str(result),(100,100),font,2,(255,255,255),2)
+# cv2.putText(frame,str(result),(100,100),font,2,(255,255,255),2)
 
 #show height raised fingers
 #cv2.putText(frame,'finger1',tuple(finger[0]),font,2,(255,255,255),2)
@@ -185,7 +188,7 @@ cv2.putText(frame,str(result),(100,100),font,2,(255,255,255),2)
 x,y,w,h = cv2.boundingRect(cnts)
 img = cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
 
-cv2.drawContours(frame,[hull],-1,(255,255,255),2)
+# cv2.drawContours(frame,[hull],-1,(255,255,255),2)
 
 ##### Show final image ########
 cv2.imshow('Dilation',frame)
