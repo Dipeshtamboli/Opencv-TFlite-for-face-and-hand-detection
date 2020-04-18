@@ -46,7 +46,8 @@ cv2.createTrackbar('v', 'HSV_TrackBar',0,255,nothing)
 # img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hands_in_air.jpg"
 # img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
 # img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/sanitizer.jpeg"
-img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand2.jpeg"
+# img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand2.jpeg"
+img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/shopkeeper9.jpeg"
 
 
 
