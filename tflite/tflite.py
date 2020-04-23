@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 
 # import matplotlib.image as mpimg
-img = "/home/dipesh/Opencv-TFlite-for-face-and-hand-detection/images/sanitizer.jpeg"
+img = "../../images/sanitizer.jpeg"
 # plt_img = mpimg.imread(img)
 
 frame = cv2.imread(img)
@@ -23,7 +23,7 @@ frame = np.array(frame, dtype = np.float32)
 # exit()
 
 # Here Input is 256*256*3
-path = "/home/dipesh/Opencv-TFlite-for-face-and-hand-detection/tflite/models/hand_landmark.tflite"
+path = "../models/hand_landmark.tflite"
 interpreter = tf.lite.Interpreter(model_path=path) # ouput is 21*2
 interpreter.allocate_tensors()
 
