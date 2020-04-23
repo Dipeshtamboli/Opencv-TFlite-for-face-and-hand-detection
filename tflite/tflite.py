@@ -3,10 +3,10 @@ import tkinter
 import matplotlib.pyplot as plt
 import matplotlib.tri as tri
 import numpy as np
+import tensorflow as tf
 
 # import matplotlib.image as mpimg
-# img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/hand.jpg"
-img = "/home/dipesh/Hackathon-where-is-my-sanitizer/images/sanitizer.jpeg"
+img = "/home/dipesh/Opencv-TFlite-for-face-and-hand-detection/images/sanitizer.jpeg"
 # plt_img = mpimg.imread(img)
 
 frame = cv2.imread(img)
@@ -22,12 +22,8 @@ frame = np.array(frame, dtype = np.float32)
 # print(type(frame))
 # exit()
 
-import tensorflow as tf
 # Here Input is 256*256*3
-# interpreter = tf.lite.Interpreter(model_path="hand_landmark_3d.tflite") # output is 21*3
-# interpreter = tf.lite.Interpreter(model_path="hand_landmark.tflite") # ouput is 21*2
-# path = "/home/dipesh/Hackathon-where-is-my-sanitizer/tflite/models/hand_landmark.tflite"
-path = "/home/dipesh/Hackathon-where-is-my-sanitizer/tflite/models/hand_landmark.tflite"
+path = "/home/dipesh/Opencv-TFlite-for-face-and-hand-detection/tflite/models/hand_landmark.tflite"
 interpreter = tf.lite.Interpreter(model_path=path) # ouput is 21*2
 interpreter.allocate_tensors()
 
